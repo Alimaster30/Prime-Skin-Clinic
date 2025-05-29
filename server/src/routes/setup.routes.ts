@@ -2,8 +2,30 @@ import express from 'express';
 import bcrypt from 'bcrypt';
 import User from '../models/user.model';
 import Settings from '../models/settings.model';
+import seedDatabase from '../scripts/seedDatabase';
 
 const router = express.Router();
+
+// Comprehensive database seeding endpoint
+router.get('/seed', async (req, res) => {
+  try {
+    await seedDatabase();
+    res.status(200).json({
+      message: 'Database seeded successfully!',
+      credentials: {
+        admin: { email: 'admin@psc.com', password: 'admin123' },
+        doctor: { email: 'doctor@psc.com', password: 'doctor123' },
+        receptionist: { email: 'reception@psc.com', password: 'reception123' }
+      }
+    });
+  } catch (error: any) {
+    console.error('Seeding error:', error);
+    res.status(500).json({
+      message: 'Database seeding failed',
+      error: error?.message || 'Unknown error'
+    });
+  }
+});
 
 // Setup initial admin user and settings (GET version for easy browser access)
 router.get('/init', async (req, res) => {
