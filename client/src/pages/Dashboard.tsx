@@ -55,7 +55,7 @@ const Dashboard: React.FC = () => {
         // Fetch real-time data from the API based on user role
         if (user?.role === 'admin') {
           // Admin dashboard data - fetch from API
-          const summaryResponse = await fetch('/api/analytics/dashboard-summary', {
+          const summaryResponse = await fetch(`${import.meta.env.VITE_API_URL}/analytics/dashboard-summary`, {
             headers: {
               'Authorization': `Bearer ${localStorage.getItem('token')}`
             }
@@ -77,7 +77,7 @@ const Dashboard: React.FC = () => {
           }
 
           // Fetch appointment analytics
-          const appointmentsResponse = await fetch('/api/analytics/appointments', {
+          const appointmentsResponse = await fetch(`${import.meta.env.VITE_API_URL}/analytics/appointments`, {
             headers: {
               'Authorization': `Bearer ${localStorage.getItem('token')}`
             }
@@ -153,7 +153,7 @@ const Dashboard: React.FC = () => {
         } else if (user?.role === 'dermatologist') {
           // Dermatologist dashboard data - fetch from API
           // For dermatologists, we need to fetch their specific data
-          const response = await fetch('/api/users/me/dashboard', {
+          const response = await fetch(`${import.meta.env.VITE_API_URL}/users/me/dashboard`, {
             headers: {
               'Authorization': `Bearer ${localStorage.getItem('token')}`
             }
@@ -188,7 +188,7 @@ const Dashboard: React.FC = () => {
           }
         } else if (user?.role === 'receptionist') {
           // Receptionist dashboard data - fetch from API
-          const response = await fetch('/api/users/me/dashboard', {
+          const response = await fetch(`${import.meta.env.VITE_API_URL}/users/me/dashboard`, {
             headers: {
               'Authorization': `Bearer ${localStorage.getItem('token')}`
             }
