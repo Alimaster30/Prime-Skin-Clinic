@@ -78,9 +78,9 @@ router.get('/init', async (req, res) => {
       }
     });
 
-  } catch (error) {
+  } catch (error: any) {
     console.error('Setup error:', error);
-    res.status(500).json({ message: 'Setup failed', error: (error as Error).message });
+    res.status(500).json({ message: 'Setup failed', error: error?.message || 'Unknown error' });
   }
 });
 
@@ -157,9 +157,9 @@ router.post('/init', async (req, res) => {
       }
     });
 
-  } catch (error) {
+  } catch (error: any) {
     console.error('Setup error:', error);
-    res.status(500).json({ message: 'Setup failed', error: (error as Error).message });
+    res.status(500).json({ message: 'Setup failed', error: error?.message || 'Unknown error' });
   }
 });
 
