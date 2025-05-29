@@ -30,10 +30,15 @@ const Login: React.FC = () => {
   const onSubmit = async (data: LoginFormData) => {
     try {
       setIsLoading(true);
+      console.log('🚀 Form submitted with:', data);
+
       await login(data.email, data.password);
+      console.log('✅ Login successful, navigating to dashboard...');
+
       toast.success('Login successful!');
       navigate('/');
     } catch (error: any) {
+      console.error('❌ Login form error:', error);
       toast.error(error.response?.data?.message || 'Login failed. Please try again.');
     } finally {
       setIsLoading(false);

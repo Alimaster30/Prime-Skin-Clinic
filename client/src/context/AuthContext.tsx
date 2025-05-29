@@ -72,7 +72,10 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const login = async (email: string, password: string) => {
     try {
       setIsLoading(true);
+      console.log('🔐 Attempting login with:', { email, apiUrl: import.meta.env.VITE_API_URL });
+
       const response = await authAPI.login(email, password);
+      console.log('✅ Login response:', response.data);
 
       const { token: newToken, user: userData } = response.data;
 
@@ -84,9 +87,10 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       localStorage.setItem('token', newToken);
       localStorage.setItem('user', JSON.stringify(userData));
 
+      console.log('✅ Login successful, user saved:', userData);
       toast.success('Login successful!');
     } catch (error) {
-      console.error('Login error:', error);
+      console.error('❌ Login error:', error);
       throw error;
     } finally {
       setIsLoading(false);
