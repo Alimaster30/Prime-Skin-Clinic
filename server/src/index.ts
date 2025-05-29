@@ -89,7 +89,27 @@ app.use(limiter);
 
 // Routes
 app.get('/', (req: Request, res: Response) => {
-  res.send('Dermatology Clinic Management System API');
+  res.json({
+    message: 'Prime Skin Clinic Management System API',
+    status: 'running',
+    version: '1.0.0',
+    timestamp: new Date().toISOString()
+  });
+});
+
+// API health check
+app.get('/api', (req: Request, res: Response) => {
+  res.json({
+    message: 'Prime Skin Clinic API is running',
+    status: 'healthy',
+    endpoints: [
+      '/api/auth/login',
+      '/api/setup/seed',
+      '/api/users',
+      '/api/patients',
+      '/api/appointments'
+    ]
+  });
 });
 
 // Apply routes
