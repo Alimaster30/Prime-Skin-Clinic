@@ -1,15 +1,10 @@
 {
   "version": 2,
   "name": "prime-skin-clinic",
-  "builds": [
-    {
-      "src": "package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "dist"
-      }
-    }
-  ],
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "installCommand": "npm install",
+  "framework": "vite",
   "routes": [
     {
       "src": "/assets/(.*)",
@@ -21,13 +16,5 @@
       "src": "/(.*)",
       "dest": "/index.html"
     }
-  ],
-  "env": {
-    "VITE_API_URL": "@vite_api_url"
-  },
-  "build": {
-    "env": {
-      "VITE_API_URL": "@vite_api_url"
-    }
-  }
+  ]
 }
