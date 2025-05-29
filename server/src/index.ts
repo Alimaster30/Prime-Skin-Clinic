@@ -52,7 +52,9 @@ const connectDB = async () => {
 };
 
 // Trust proxy for Render deployment
-app.set('trust proxy', 1);
+if (process.env.NODE_ENV === 'production') {
+  app.set('trust proxy', 1);
+}
 
 // Middleware
 app.use(express.json());
@@ -109,5 +111,10 @@ app.use(errorHandler);
 connectDB().then(() => {
   app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
+    console.log(`Environment: ${process.env.NODE_ENV}`);
+    console.log(`Trust proxy: ${app.get('trust proxy')}`);
   });
+}).catch((error) => {
+  console.error('Failed to start server:', error);
+  process.exit(1);
 });
