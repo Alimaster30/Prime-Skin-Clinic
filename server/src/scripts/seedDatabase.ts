@@ -17,7 +17,7 @@ const seedDatabase = async () => {
     console.log('✅ Cleared existing data');
 
     // Create Admin User
-    const hashedPassword = await bcrypt.hash('admin123', 10);
+    const hashedPassword = await bcrypt.hash('Admin123!', 10);
     const adminUser = new User({
       firstName: 'Admin',
       lastName: 'User',
@@ -28,10 +28,10 @@ const seedDatabase = async () => {
       phoneNumber: '+92-300-1234567'
     });
     await adminUser.save();
-    console.log('✅ Created admin user: admin@psc.com / admin123');
+    console.log('✅ Created admin user: admin@psc.com / Admin123!');
 
     // Create Dermatologist
-    const doctorPassword = await bcrypt.hash('doctor123', 10);
+    const doctorPassword = await bcrypt.hash('Doctor123!', 10);
     const doctorUser = new User({
       firstName: 'Dr. Sarah',
       lastName: 'Ahmed',
@@ -42,10 +42,10 @@ const seedDatabase = async () => {
       phoneNumber: '+92-300-7654321'
     });
     await doctorUser.save();
-    console.log('✅ Created doctor user: doctor@psc.com / doctor123');
+    console.log('✅ Created doctor user: doctor@psc.com / Doctor123!');
 
     // Create Receptionist
-    const receptionistPassword = await bcrypt.hash('reception123', 10);
+    const receptionistPassword = await bcrypt.hash('Reception123!', 10);
     const receptionistUser = new User({
       firstName: 'Maria',
       lastName: 'Khan',
@@ -56,7 +56,7 @@ const seedDatabase = async () => {
       phoneNumber: '+92-300-9876543'
     });
     await receptionistUser.save();
-    console.log('✅ Created receptionist user: reception@psc.com / reception123');
+    console.log('✅ Created receptionist user: reception@psc.com / Reception123!');
 
     // Create Settings
     const settings = new Settings({
@@ -172,9 +172,9 @@ const seedDatabase = async () => {
 
     console.log('🎉 Database seeding completed successfully!');
     console.log('\n📋 Login Credentials:');
-    console.log('Admin: admin@psc.com / admin123');
-    console.log('Doctor: doctor@psc.com / doctor123');
-    console.log('Receptionist: reception@psc.com / reception123');
+    console.log('Admin: admin@psc.com / Admin123!');
+    console.log('Doctor: doctor@psc.com / Doctor123!');
+    console.log('Receptionist: reception@psc.com / Reception123!');
 
   } catch (error) {
     console.error('❌ Database seeding failed:', error);
