@@ -30,6 +30,9 @@ import { errorHandler } from './middlewares/error.middleware';
 const app: Express = express();
 const PORT = process.env.PORT || 5001;
 
+// Set mongoose options
+mongoose.set('strictQuery', false);
+
 // Connect to MongoDB
 const connectDB = async () => {
   try {
