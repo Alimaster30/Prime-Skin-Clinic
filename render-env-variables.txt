@@ -1,0 +1,34 @@
+RENDER ENVIRONMENT VARIABLES
+=============================
+
+BACKEND (Web Service):
+----------------------
+NODE_ENV=production
+PORT=10000
+JWT_SECRET=prime-skin-clinic-super-secure-jwt-secret-key-2025
+MONGODB_URI=mongodb+srv://primeskin:PrimeSkin2025!@cluster0.xxxxx.mongodb.net/prime-skin-clinic?retryWrites=true&w=majority
+
+FRONTEND (Static Site):
+-----------------------
+VITE_API_URL=https://prime-skin-clinic-backend.onrender.com/api
+VITE_APP_NAME=Prime Skin Clinic
+VITE_APP_VERSION=1.0.0
+
+DEPLOYMENT SETTINGS:
+===================
+
+Backend Web Service:
+- Repository: Alimaster30/Prime-Skin-Clinic
+- Branch: main
+- Root Directory: server
+- Build Command: npm install && npm run build
+- Start Command: npm start
+- Plan: Free
+
+Frontend Static Site:
+- Repository: Alimaster30/Prime-Skin-Clinic
+- Branch: main
+- Root Directory: client
+- Build Command: npm install && npm run build
+- Publish Directory: dist
+- Plan: Free

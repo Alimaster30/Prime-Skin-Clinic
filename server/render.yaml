@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: prime-skin-clinic-backend
+    env: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: JWT_SECRET
+        value: prime-skin-clinic-super-secure-jwt-secret-key-2025
+      - key: MONGODB_URI
+        sync: false # This will be set manually in Render dashboard
+    healthCheckPath: /
+    autoDeploy: true

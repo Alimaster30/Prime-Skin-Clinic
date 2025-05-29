@@ -1,4 +1,21 @@
-import mongoose from 'mongoose';
+import mongoose, { Document } from 'mongoose';
+
+export interface ISettings extends Document {
+  clinicName?: string;
+  address?: string;
+  phoneNumber?: string;
+  email?: string;
+  website?: string;
+  workingHours?: any;
+  consultationFees?: any;
+  currency?: string;
+  taxRate?: number;
+  notifications?: any;
+  backup?: any;
+  appointmentDuration?: number;
+  appointmentBuffer?: number;
+  logo?: string;
+}
 
 const workingHoursSchema = new mongoose.Schema({
   monday: { start: String, end: String },
@@ -48,4 +65,4 @@ const settingsSchema = new mongoose.Schema({
   logo: String,
 }, { timestamps: true });
 
-export default mongoose.model('Settings', settingsSchema); 
+export default mongoose.model<ISettings>('Settings', settingsSchema);

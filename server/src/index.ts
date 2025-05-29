@@ -50,7 +50,9 @@ const corsOptions = {
     'http://localhost:3000',
     'http://localhost:5173',
     'https://prime-skin-clinic.vercel.app',
-    /\.vercel\.app$/
+    'https://prime-skin-clinic-frontend.onrender.com',
+    /\.vercel\.app$/,
+    /\.onrender\.com$/
   ],
   credentials: true,
   optionsSuccessStatus: 200
