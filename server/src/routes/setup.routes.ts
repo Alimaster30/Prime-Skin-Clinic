@@ -13,9 +13,9 @@ router.get('/seed', async (req, res) => {
     res.status(200).json({
       message: 'Database seeded successfully!',
       credentials: {
-        admin: { email: 'admin@psc.com', password: 'admin123' },
-        doctor: { email: 'doctor@psc.com', password: 'doctor123' },
-        receptionist: { email: 'reception@psc.com', password: 'reception123' }
+        admin: { email: 'admin@psc.com', password: 'Admin123!' },
+        doctor: { email: 'doctor@psc.com', password: 'Doctor123!' },
+        receptionist: { email: 'reception@psc.com', password: 'Reception123!' }
       }
     });
   } catch (error: any) {
@@ -37,7 +37,7 @@ router.get('/init', async (req, res) => {
     }
 
     // Create admin user
-    const hashedPassword = await bcrypt.hash('admin123', 10);
+    const hashedPassword = await bcrypt.hash('Admin123!', 10);
     const adminUser = new User({
       firstName: 'Admin',
       lastName: 'User',
@@ -96,7 +96,7 @@ router.get('/init', async (req, res) => {
       message: 'Initial setup completed successfully',
       admin: {
         email: 'admin@psc.com',
-        password: 'admin123'
+        password: 'Admin123!'
       }
     });
 
@@ -116,7 +116,7 @@ router.post('/init', async (req, res) => {
     }
 
     // Create admin user
-    const hashedPassword = await bcrypt.hash('admin123', 10);
+    const hashedPassword = await bcrypt.hash('Admin123!', 10);
     const adminUser = new User({
       firstName: 'Admin',
       lastName: 'User',
@@ -175,7 +175,7 @@ router.post('/init', async (req, res) => {
       message: 'Initial setup completed successfully',
       admin: {
         email: 'admin@psc.com',
-        password: 'admin123'
+        password: 'Admin123!'
       }
     });
 
