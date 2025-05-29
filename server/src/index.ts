@@ -36,10 +36,16 @@ mongoose.set('strictQuery', false);
 // Connect to MongoDB
 const connectDB = async () => {
   try {
-    const conn = await mongoose.connect(process.env.MONGODB_URI as string);
+    const mongoUri = process.env.MONGODB_URI as string;
+    console.log('Attempting to connect to MongoDB...');
+    const conn = await mongoose.connect(mongoUri, {
+      dbName: 'prime-skin-clinic'
+    });
     console.log(`MongoDB Connected: ${conn.connection.host}`);
+    console.log(`Database: ${conn.connection.name}`);
   } catch (error) {
-    console.error(`Error: ${error}`);
+    console.error(`MongoDB Connection Error: ${error}`);
+    console.error('Please check your MongoDB URI and network access settings');
     process.exit(1);
   }
 };
