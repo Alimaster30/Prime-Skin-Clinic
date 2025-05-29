@@ -28,7 +28,7 @@ import { errorHandler } from './middlewares/error.middleware';
 
 // Initialize Express app
 const app: Express = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5001;
 
 // Connect to MongoDB
 const connectDB = async () => {
@@ -44,7 +44,18 @@ const connectDB = async () => {
 // Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors());
+// CORS configuration
+const corsOptions = {
+  origin: [
+    'http://localhost:3000',
+    'http://localhost:5173',
+    'https://prime-skin-clinic.vercel.app',
+    /\.vercel\.app$/
+  ],
+  credentials: true,
+  optionsSuccessStatus: 200
+};
+app.use(cors(corsOptions));
 app.use(helmet());
 app.use(morgan('dev'));
 app.use(compression());
