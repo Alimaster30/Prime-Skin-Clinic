@@ -80,7 +80,7 @@ router.get('/init', async (req, res) => {
 
   } catch (error) {
     console.error('Setup error:', error);
-    res.status(500).json({ message: 'Setup failed', error: error.message });
+    res.status(500).json({ message: 'Setup failed', error: (error as Error).message });
   }
 });
 
@@ -159,7 +159,7 @@ router.post('/init', async (req, res) => {
 
   } catch (error) {
     console.error('Setup error:', error);
-    res.status(500).json({ message: 'Setup failed', error: error.message });
+    res.status(500).json({ message: 'Setup failed', error: (error as Error).message });
   }
 });
 
