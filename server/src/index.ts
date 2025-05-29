@@ -22,6 +22,7 @@ import analyticsRoutes from './routes/analytics.routes';
 import settingsRoutes from './routes/settings.routes';
 import backupRoutes from './routes/backup.routes';
 import serviceRoutes from './routes/service.routes';
+import setupRoutes from './routes/setup.routes';
 
 // Import error handler
 import { errorHandler } from './middlewares/error.middleware';
@@ -96,6 +97,7 @@ app.use('/api/analytics', analyticsRoutes);
 app.use('/api/settings', settingsRoutes);
 app.use('/api/backups', backupRoutes);
 app.use('/api/services', serviceRoutes);
+app.use('/api/setup', setupRoutes);
 
 // Error handling middleware
 app.use(errorHandler);
