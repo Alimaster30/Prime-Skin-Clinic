@@ -146,25 +146,27 @@ const seedDatabase = async () => {
       phoneNumber: '+92-300-1111111',
       dateOfBirth: new Date('1990-01-15'),
       gender: 'male',
-      address: {
-        street: '456 Sample Street',
-        city: 'Lahore',
-        state: 'Punjab',
-        zipCode: '54000',
-        country: 'Pakistan'
-      },
+      address: '456 Sample Street, Gulberg III, Lahore, Punjab, 54000, Pakistan',
       emergencyContact: {
         name: 'Jane Doe',
         relationship: 'spouse',
         phoneNumber: '+92-300-2222222'
       },
-      medicalHistory: {
-        allergies: ['None'],
-        currentMedications: [],
-        pastSurgeries: [],
-        chronicConditions: []
-      }
+      bloodType: 'O+'
     });
+
+    // Set encrypted medical history and allergies using the model methods
+    samplePatient.setMedicalHistory([
+      {
+        condition: 'Acne',
+        diagnosis: 'Mild acne vulgaris',
+        notes: 'Patient has mild acne on face and back',
+        diagnosedAt: new Date('2023-01-15')
+      }
+    ]);
+
+    samplePatient.setAllergies(['None known']);
+
     await samplePatient.save();
     console.log('✅ Created sample patient');
 
