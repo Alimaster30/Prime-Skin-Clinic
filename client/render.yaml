@@ -5,7 +5,7 @@ services:
     staticPublishPath: ./dist
     envVars:
       - key: VITE_API_URL
-        value: https://prime-skin-clinic-backend.onrender.com/api
+        value: https://prime-skin-clinic.onrender.com/api
       - key: VITE_APP_NAME
         value: Prime Skin Clinic
       - key: VITE_APP_VERSION
